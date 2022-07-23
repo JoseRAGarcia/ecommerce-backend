@@ -30,5 +30,5 @@ app.use((error: Error, request: Request, response: Response, next: NextFunction)
 })
 
 app.listen(3333, () => {
-    console.log('Server started on port 3333!');
+    console.log('Server started on http://localhost:3333/');
 })
