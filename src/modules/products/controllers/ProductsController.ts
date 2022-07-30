@@ -20,9 +20,9 @@ export default class ProductsController {
 
         const showProduct = new ShowProductService()
 
-        const products = await showProduct.execute({ id })
+        const product = await showProduct.execute({ id })
 
-        return response.json(products)
+        return response.json(product)
     }
 
     public async create(request: Request, response: Response): Promise<Response> {
