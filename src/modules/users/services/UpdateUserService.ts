@@ -8,11 +8,10 @@ interface IRequest {
     name: string
     email: string
     password: string
-    avatar: string
 }
 
 class UpdateUserService {
-    public async execute({ id, name, email, password, avatar }: IRequest): Promise<User> {
+    public async execute({ id, name, email, password }: IRequest): Promise<User> {
         const usersRepository = getCustomRepository(UsersRepository)
 
         const user = await usersRepository.findOne(id)
@@ -29,7 +28,6 @@ class UpdateUserService {
 
         user.name = name
         user.password = password
-        user.avatar = avatar
 
         await usersRepository.save(user)
 
