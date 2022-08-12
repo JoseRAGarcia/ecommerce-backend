@@ -22,7 +22,6 @@ class SendForgotPasswordEmailService {
 
         console.log(token);        
     }
-
 }
 
 export default SendForgotPasswordEmailService
