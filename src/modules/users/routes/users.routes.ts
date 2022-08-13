@@ -40,7 +40,6 @@ usersRouter.put(
             name: Joi.string().required(),
             email: Joi.string().email().required(),
             password: Joi.string().required(),
-            avatar: Joi.string(),
         },
         [Segments.PARAMS]: {
             id: Joi.string().uuid().required(),
