@@ -1,5 +1,6 @@
 import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
+import path from 'path'
 import UsersRepository from "../typeorm/repositories/UsersRepository";
 import UserTokesRepository from "../typeorm/repositories/UserTokesRepository";
 import EtherealMail from '@config/mail/EtherealMail'
@@ -15,17 +16,27 @@ class SendForgotPasswordEmailService {
 
         const user = await usersRepository.findByEmail(email)
 
-        if(!user) {
+        if (!user) {
             throw new AppError('User does not exists')
         }
 
-        const token = await userTokensRepository.generate(user.id)
+        const { token } = await userTokensRepository.generate(user.id)
 
-        //console.log(token);        
+        const forgotPasswordTemplate = path.resolve(__dirname, '..', 'views', 'forgot_password.hbs')
 
         await EtherealMail.sendMail({
-            to: email,
-            body: `Solicitação de redefinição de senha receida: ${token?.token}`
+            to: {
+                name: user.name,
+                email: user.email,
+            },
+            subject: '[Dehdo Ecommerce] Recuperação de Senha',
+            templateData: {
+                file: forgotPasswordTemplate,
+                variables: {
+                    name: user.name,
+                    link: `http://localhost:3000/reset-password?token=${token}`,
+                }
+            }
         })
     }
 }
