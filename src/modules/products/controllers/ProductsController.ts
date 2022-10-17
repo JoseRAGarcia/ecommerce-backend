@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { json } from "stream/consumers";
 import CreateProductService from "../services/CreateProductService";
 import DeleteProductService from "../services/DeleteProductService";
 import ListProductService from "../services/ListProductService";
