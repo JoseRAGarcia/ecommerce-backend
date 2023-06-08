@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/http/server.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "migration:create": "npm run typeorm migration:create -- -n",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files"
@@ -57,6 +57,7 @@
     "rate-limiter-flexible": "^2.4.1",
     "redis": "^4.6.1",
     "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.7.0",
     "typeorm": "^0.2.29",
     "typeorm-pagination": "^2.0.3"
   }

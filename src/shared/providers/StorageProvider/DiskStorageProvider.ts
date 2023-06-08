@@ -2,7 +2,7 @@ import uploadConfig from '@config/upload';
 import path from 'path';
 import fs from 'fs';
 
-export default class DiskStorageProveider {
+export default class DiskStorageProvider {
     public async saveFile(file: string): Promise<string> {
         await fs.promises.rename(
             path.resolve(uploadConfig.tmpFolder, file),
