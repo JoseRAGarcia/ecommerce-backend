@@ -24,7 +24,7 @@ services:
       - .docker/dbdata:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=docker
-      - POSTGRES_DC=apivendas
+      - POSTGRES_DB=apivendas
 
   redis:
     image: 'bitnami/redis:latest'
